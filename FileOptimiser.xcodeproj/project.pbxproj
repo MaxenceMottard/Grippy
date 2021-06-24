@@ -8,17 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		D041298A26795AB40013808C /* FileOptimiserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041298926795AB40013808C /* FileOptimiserApp.swift */; };
-		D041298C26795AB40013808C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041298B26795AB40013808C /* ContentView.swift */; };
+		D041298C26795AB40013808C /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041298B26795AB40013808C /* ImportView.swift */; };
 		D041298E26795AB60013808C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D041298D26795AB60013808C /* Assets.xcassets */; };
 		D041299126795AB60013808C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D041299026795AB60013808C /* Preview Assets.xcassets */; };
+		D041299926795C1E0013808C /* DocumentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041299826795C1E0013808C /* DocumentPickerView.swift */; };
+		D041299B267965FE0013808C /* PDFKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041299A267965FE0013808C /* PDFKitView.swift */; };
+		D041299E2679684D0013808C /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041299D2679684D0013808C /* Data+Extensions.swift */; };
+		D04129A126796C100013808C /* CompressionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04129A026796C100013808C /* CompressionListView.swift */; };
+		D04129A32679BDC50013808C /* CompressionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04129A22679BDC50013808C /* CompressionListViewModel.swift */; };
+		D08C1D712680AC7700CEB114 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C1D702680AC7700CEB114 /* UIImage+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D041298626795AB40013808C /* FileOptimiser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileOptimiser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D041298926795AB40013808C /* FileOptimiserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOptimiserApp.swift; sourceTree = "<group>"; };
-		D041298B26795AB40013808C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D041298B26795AB40013808C /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		D041298D26795AB60013808C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D041299026795AB60013808C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D041299826795C1E0013808C /* DocumentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerView.swift; sourceTree = "<group>"; };
+		D041299A267965FE0013808C /* PDFKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitView.swift; sourceTree = "<group>"; };
+		D041299D2679684D0013808C /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		D04129A026796C100013808C /* CompressionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressionListView.swift; sourceTree = "<group>"; };
+		D04129A22679BDC50013808C /* CompressionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressionListViewModel.swift; sourceTree = "<group>"; };
+		D08C1D6F26809FCA00CEB114 /* FileOptimiser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FileOptimiser.entitlements; sourceTree = "<group>"; };
+		D08C1D702680AC7700CEB114 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +64,11 @@
 		D041298826795AB40013808C /* FileOptimiser */ = {
 			isa = PBXGroup;
 			children = (
+				D08C1D6F26809FCA00CEB114 /* FileOptimiser.entitlements */,
+				D041299C2679683A0013808C /* Extensions */,
+				D041299726795C070013808C /* Component */,
+				D041299F267969D30013808C /* Views */,
 				D041298926795AB40013808C /* FileOptimiserApp.swift */,
-				D041298B26795AB40013808C /* ContentView.swift */,
 				D041298D26795AB60013808C /* Assets.xcassets */,
 				D041298F26795AB60013808C /* Preview Content */,
 			);
@@ -65,6 +81,34 @@
 				D041299026795AB60013808C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D041299726795C070013808C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				D041299826795C1E0013808C /* DocumentPickerView.swift */,
+				D041299A267965FE0013808C /* PDFKitView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		D041299C2679683A0013808C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D041299D2679684D0013808C /* Data+Extensions.swift */,
+				D08C1D702680AC7700CEB114 /* UIImage+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D041299F267969D30013808C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D041298B26795AB40013808C /* ImportView.swift */,
+				D04129A026796C100013808C /* CompressionListView.swift */,
+				D04129A22679BDC50013808C /* CompressionListViewModel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +181,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D041298C26795AB40013808C /* ContentView.swift in Sources */,
+				D041299B267965FE0013808C /* PDFKitView.swift in Sources */,
+				D04129A32679BDC50013808C /* CompressionListViewModel.swift in Sources */,
+				D041298C26795AB40013808C /* ImportView.swift in Sources */,
+				D041299926795C1E0013808C /* DocumentPickerView.swift in Sources */,
 				D041298A26795AB40013808C /* FileOptimiserApp.swift in Sources */,
+				D041299E2679684D0013808C /* Data+Extensions.swift in Sources */,
+				D04129A126796C100013808C /* CompressionListView.swift in Sources */,
+				D08C1D712680AC7700CEB114 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +316,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FileOptimiser/FileOptimiser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FileOptimiser/Preview Content\"";
@@ -285,6 +336,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxencemottard.FileOptimiser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -296,6 +348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FileOptimiser/FileOptimiser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FileOptimiser/Preview Content\"";
@@ -315,6 +368,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxencemottard.FileOptimiser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
