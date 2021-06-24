@@ -9,11 +9,26 @@ import UIKit
 
 extension UIImage {
     enum JPEGQuality: CGFloat {
-        case lowest  = 0
+        case original  = 0
         case low     = 0.25
         case medium  = 0.5
         case high    = 0.75
         case highest = 1
+        
+        var name: String {
+            switch self {
+            case .original:
+                return "original"
+            case .low:
+                return "low"
+            case .medium:
+                return "medium"
+            case .high:
+                return "high"
+            case .highest:
+                return "highest"
+            }
+        }
     }
 
     /// Returns the data for the specified image in JPEG format.

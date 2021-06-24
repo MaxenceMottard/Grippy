@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D029726A2684632C0084A17A /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02972692684632C0084A17A /* ShareSheet.swift */; };
+		D029726C26849D510084A17A /* PDFPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029726B26849D510084A17A /* PDFPreviewView.swift */; };
+		D029726E2684B6330084A17A /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029726D2684B6330084A17A /* ProgressBar.swift */; };
 		D041298A26795AB40013808C /* FileOptimiserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041298926795AB40013808C /* FileOptimiserApp.swift */; };
 		D041298C26795AB40013808C /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041298B26795AB40013808C /* ImportView.swift */; };
 		D041298E26795AB60013808C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D041298D26795AB60013808C /* Assets.xcassets */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D02972692684632C0084A17A /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		D029726B26849D510084A17A /* PDFPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewView.swift; sourceTree = "<group>"; };
+		D029726D2684B6330084A17A /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D041298626795AB40013808C /* FileOptimiser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileOptimiser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D041298926795AB40013808C /* FileOptimiserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOptimiserApp.swift; sourceTree = "<group>"; };
 		D041298B26795AB40013808C /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
@@ -88,6 +94,8 @@
 			children = (
 				D041299826795C1E0013808C /* DocumentPickerView.swift */,
 				D041299A267965FE0013808C /* PDFKitView.swift */,
+				D02972692684632C0084A17A /* ShareSheet.swift */,
+				D029726D2684B6330084A17A /* ProgressBar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -107,6 +115,7 @@
 				D041298B26795AB40013808C /* ImportView.swift */,
 				D04129A026796C100013808C /* CompressionListView.swift */,
 				D04129A22679BDC50013808C /* CompressionListViewModel.swift */,
+				D029726B26849D510084A17A /* PDFPreviewView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,11 +190,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D029726C26849D510084A17A /* PDFPreviewView.swift in Sources */,
+				D029726E2684B6330084A17A /* ProgressBar.swift in Sources */,
 				D041299B267965FE0013808C /* PDFKitView.swift in Sources */,
 				D04129A32679BDC50013808C /* CompressionListViewModel.swift in Sources */,
 				D041298C26795AB40013808C /* ImportView.swift in Sources */,
 				D041299926795C1E0013808C /* DocumentPickerView.swift in Sources */,
 				D041298A26795AB40013808C /* FileOptimiserApp.swift in Sources */,
+				D029726A2684632C0084A17A /* ShareSheet.swift in Sources */,
 				D041299E2679684D0013808C /* Data+Extensions.swift in Sources */,
 				D04129A126796C100013808C /* CompressionListView.swift in Sources */,
 				D08C1D712680AC7700CEB114 /* UIImage+Extensions.swift in Sources */,

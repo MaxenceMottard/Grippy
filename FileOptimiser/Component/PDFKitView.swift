@@ -10,10 +10,10 @@ import UIKit
 import SwiftUI
 
 struct PDFKitView: UIViewRepresentable {
-    @Binding var compressedData: CompressedData?
+    var compressedData: CompressedData?
     
-    init(compressedData: Binding<CompressedData?>) {
-        self._compressedData = compressedData
+    init(compressedData: CompressedData?) {
+        self.compressedData = compressedData
     }
 
     func makeUIView(context: UIViewRepresentableContext<PDFKitView>) -> PDFKitView.UIViewType {

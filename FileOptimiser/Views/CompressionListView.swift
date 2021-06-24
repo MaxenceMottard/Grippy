@@ -10,31 +10,33 @@ import SwiftUI
 struct CompressionListView: View {
     @ObservedObject var viewModel: CompressionListViewModel
     
-    init(data: Data) {
-        self.viewModel = CompressionListViewModel(data: data)
+    init(pickedDocument: PickedDocument) {
+        self.viewModel = CompressionListViewModel(pickedDocument: pickedDocument)
     }
     
     var body: some View {
         ScrollView {
             VStack {
                 ForEach(viewModel.dataCompressed, id: \.algorithm.rawValue) { compressedData in
-                    Button(action: { viewModel.selectedCompressedData = compressedData }) {
-                        HStack {
-                            Text(compressedData.algorithm.rawValue)
-                            Text(compressedData.data.dataRepresentation()?.formattedSize ?? "")
-                            
-                            if viewModel.selectedCompressedData == compressedData {
-                                Text("selected")
+                    NavigationLink(destination: PDFPreviewView(compressedData: compressedData, filename: viewModel.pickedDocument.filename)) {
+                        VStack {
+                            HStack {
+                                Text(compressedData.algorithm.name)
+                                
+                                if viewModel.selectedCompressedData == compressedData {
+                                    Text("selected")
+                                }
                             }
+                            
+                            Text("\(viewModel.pickedDocument.data.formattedSize) to \(compressedData.formattedSize) (\(compressedData.percentOfOriginalSize)%)")
+                            ProgressBar(value: .constant(Float(compressedData.percentOfOriginalSize) / 100.0))
                         }.padding()
+                        .background(Color.red)
+                        .padding()
                     }
                 }
-                
-//                if viewModel.selectedCompressedData != nil {
-//                    PDFKitView(compressedData: $viewModel.selectedCompressedData)
-//                }
             }.onAppear { viewModel.compress() }
-            .onChange(of: viewModel.data) { newValue in
+            .onChange(of: viewModel.pickedDocument) { newValue in
                 viewModel.compress()
             }
         }
@@ -43,6 +45,6 @@ struct CompressionListView: View {
 
 struct CompressionListView_Previews: PreviewProvider {
     static var previews: some View {
-        CompressionListView(data: Data())
+        CompressionListView(pickedDocument: PickedDocument(data: Data(), filename: "Filename"))
     }
 }

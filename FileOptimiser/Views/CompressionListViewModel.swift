@@ -15,23 +15,34 @@ final class CompressionListViewModel: ObservableObject {
     
     @Published var dataCompressed: [CompressedData] = []
     let algorithms: [NSData.CompressionAlgorithm] = [.lz4, .lzma, .zlib, .lzfse]
-    let data: Data
+    let pickedDocument: PickedDocument
     
     @Published var selectedCompressedData: CompressedData?
     
-    init(data: Data) {
-        self.data = data
+    init(pickedDocument: PickedDocument) {
+        self.pickedDocument = pickedDocument
     }
     
     func compress() {
-        guard let document = PDFDocument(data: data) else { return }
+        guard let document = PDFDocument(data: pickedDocument.data) else { return }
         
+        let originalDocument = CompressedData(algorithm: .original, data: document, percentOfOriginalSize: 100)
+
+        self.dataCompressed = [
+            originalDocument,
+            compressWithQuality(document: document, quality: .low),
+            compressWithQuality(document: document, quality: .medium),
+            compressWithQuality(document: document, quality: .high),
+        ]
+        
+//        selectedCompressedData = originalDocument
+    }
+    
+    private func compressWithQuality(document: PDFDocument, quality: UIImage.JPEGQuality) -> CompressedData {
         let finalDocument = PDFDocument()
         
         for i in 0 ..< document.pageCount {
-            print(i)
-            guard let page = document.page(at: i),
-                let pageData = page.dataRepresentation else {
+            guard let page = document.page(at: i) else {
                 continue
             }
             
@@ -39,61 +50,33 @@ final class CompressionListViewModel: ObservableObject {
             
             let renderer = UIGraphicsImageRenderer(size: pageRect.size)
             let img = renderer.image { ctx in
-                // Set and fill the background color.
                 UIColor.white.set()
                 ctx.fill(CGRect(x: 0, y: 0, width: pageRect.width, height: pageRect.height))
-                
-                // Translate the context so that we only draw the `cropRect`.
                 ctx.cgContext.translateBy(x: -pageRect.origin.x, y: pageRect.size.height - pageRect.origin.y)
-                
-                // Flip the context vertically because the Core Graphics coordinate system starts from the bottom.
                 ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
-                
-                // Draw the PDF page.
                 page.draw(with: .mediaBox, to: ctx.cgContext)
             }
             
-            //            if let image = UIImage(data: pageData),
-            if let imageData = img.jpeg(.medium),
+            if let imageData = img.jpeg(quality),
                let resultImage = UIImage(data: imageData),
                let pdfPage = PDFPage(image: resultImage) {
-                print(imageData.formattedSize)
-                
                 finalDocument.insert(pdfPage, at: i)
             }
         }
         
-        self.dataCompressed = [
-            CompressedData(algorithm: .original, data: document),
-            CompressedData(algorithm: .zlib, data: finalDocument)
-        ]
+        let percent = 100 * (finalDocument.dataRepresentation()?.count ?? 0) / pickedDocument.data.count
+        
+        return CompressedData(algorithm: quality, data: finalDocument, percentOfOriginalSize: percent)
     }
 }
 
 struct CompressedData: Equatable {
-    let algorithm: CompressionType
+    let algorithm: UIImage.JPEGQuality
     let data: PDFDocument
-}
-
-enum CompressionType: String {
-    case lz4 = "lz4"
-    case lzma = "lzma"
-    case zlib = "zlib"
-    case lzfse = "lzfse"
-    case original = "original"
+    let percentOfOriginalSize: Int
     
-    init(algorithm compression: NSData.CompressionAlgorithm) {
-        switch compression {
-        case .lzfse:
-            self = .lzfse
-        case .lz4:
-            self = .lz4
-        case .lzma:
-            self = .lzma
-        case .zlib:
-            self = .zlib
-        @unknown default:
-            self = .original
-        }
+    var formattedSize: String {
+        return data.dataRepresentation()?.formattedSize ?? ""
     }
 }
+

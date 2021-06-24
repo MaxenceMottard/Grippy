@@ -10,7 +10,7 @@ import SwiftUI
 import MobileCoreServices
 
 struct DocumentPickerView: UIViewControllerRepresentable {
-    @Binding var data: Data?
+    @Binding var data: PickedDocument?
 
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.pdf])
@@ -29,9 +29,9 @@ struct DocumentPickerView: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, UIDocumentPickerDelegate {
-        @Binding var data: Data?
+        @Binding var data: PickedDocument?
         
-        init(data: Binding<Data?>) {
+        init(data: Binding<PickedDocument?>) {
             self._data = data
         }
         
@@ -40,8 +40,10 @@ struct DocumentPickerView: UIViewControllerRepresentable {
                   url.startAccessingSecurityScopedResource() else { return }
             
             do {
+                let filename = url.lastPathComponent
                 let fileData = try Data(contentsOf: url)
-                self.data = fileData
+                
+                self.data = PickedDocument(data: fileData, filename: filename)
             } catch(let error) {
                 print(error)
             }
@@ -49,4 +51,9 @@ struct DocumentPickerView: UIViewControllerRepresentable {
             url.stopAccessingSecurityScopedResource()
         }
     }
+}
+
+struct PickedDocument: Equatable {
+    let data: Data
+    let filename: String
 }
