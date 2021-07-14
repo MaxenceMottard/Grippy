@@ -34,8 +34,6 @@ final class CompressionListViewModel: ObservableObject {
             compressWithQuality(document: document, quality: .medium),
             compressWithQuality(document: document, quality: .high),
         ]
-        
-//        selectedCompressedData = originalDocument
     }
     
     private func compressWithQuality(document: PDFDocument, quality: UIImage.JPEGQuality) -> CompressedData {

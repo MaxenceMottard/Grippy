@@ -1,0 +1,8 @@
+git_url("git@github.com:MaxenceMottard/fastlane-certificates.git")
+git_branch("master")
+
+storage_mode("git")
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier(["com.maxencemottard.file-optimiser"])

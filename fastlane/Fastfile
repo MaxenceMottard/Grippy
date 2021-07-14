@@ -1,0 +1,52 @@
+fastlane_version '2.53.1'
+
+projectName = "FileOptimiser"
+bundleId = "com.maxencemottard.file-optimiser"
+appCenterApplicationName = "FileOptimiser"
+
+lane :appstoreconnect do |options|
+    match(type: 'appstore')
+    update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "./#{projectName}.xcodeproj"
+    )
+    build_app(
+        project: "./#{projectName}.xcodeproj",
+        scheme: projectName,
+        clean: true,
+        export_method: "app-store",
+        output_directory: "fastlane/artefacts"
+    )
+    pilot(skip_waiting_for_build_processing:true)
+end
+
+lane :appcenter do |options|
+
+    match(type: 'adhoc')
+    update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "./#{projectName}.xcodeproj"
+    )
+    
+    build_app(
+        project: "./#{projectName}.xcodeproj",
+        scheme: projectName,
+        clean: true,
+        export_method: "ad-hoc",
+        output_directory: "fastlane/artefacts",
+        export_options: {
+            provisioningProfiles: {
+                bundleId => "match AdHoc #{bundleId}",
+            }
+        }
+    )
+
+    # Uploads to App Center
+    appcenter_upload(
+        app_name: appCenterApplicationName,
+        destinations: "Collaborators",
+        dsym: "fastlane/artefacts/#{projectName}.app.dSYM.zip",
+        file: "fastlane/artefacts/#{projectName}.ipa",
+        notify_testers: false,
+    )
+end
