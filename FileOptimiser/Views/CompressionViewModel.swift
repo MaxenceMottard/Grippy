@@ -26,12 +26,11 @@ final class CompressionViewModel: ObservableObject {
     func bind() {
         $pickedData
             .map { [uploadCircleStatus, compressWithQuality] newData in
-                guard let pickedData = newData,
-                      let document = PDFDocument(data: pickedData.data) else {
+                guard let pickedData = newData else {
                     return uploadCircleStatus
                 }
 
-                compressWithQuality(document, .low)
+                compressWithQuality(pickedData, .low)
                 
                 return UploadCircle.Status.compression
             }.assign(to: \.uploadCircleStatus, on: self)
@@ -63,11 +62,13 @@ final class CompressionViewModel: ObservableObject {
     }
     
     //  MARK: Compression
-    private func compressWithQuality(document: PDFDocument, quality: UIImage.JPEGQuality) {
+    private func compressWithQuality(document: PickedDocument, quality: UIImage.JPEGQuality) {
+        guard let pdfDocument = PDFDocument(data: document.data) else { return }
+        
         let finalDocument = PDFDocument()
         
-        for i in 0 ..< document.pageCount {
-            guard let page = document.page(at: i) else {
+        for i in 0 ..< pdfDocument.pageCount {
+            guard let page = pdfDocument.page(at: i) else {
                 continue
             }
             
@@ -91,7 +92,7 @@ final class CompressionViewModel: ObservableObject {
         
         let url = FileManager.default
             .temporaryDirectory
-            .appendingPathComponent(filename ?? "document.pdf")
+            .appendingPathComponent(document.filename)
         
         finalDocument.write(to: url)
         

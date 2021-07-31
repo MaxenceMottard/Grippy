@@ -19,6 +19,9 @@
 		D0B7CFE026B4903E00661123 /* CompressionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFDF26B4903E00661123 /* CompressionViewModel.swift */; };
 		D0B7CFE326B4BEA900661123 /* DocumentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFE126B4BEA900661123 /* DocumentPickerView.swift */; };
 		D0B7CFE426B4BEA900661123 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFE226B4BEA900661123 /* ShareSheet.swift */; };
+		D0B7CFE626B521C200661123 /* TypingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFE526B521C200661123 /* TypingAnimationView.swift */; };
+		D0B7CFEA26B5391800661123 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CFE826B537FF00661123 /* Pacifico-Regular.ttf */; };
+		D0B7CFEC26B539F300661123 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFEB26B539F300661123 /* LaunchScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,10 @@
 		D0B7CFDF26B4903E00661123 /* CompressionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressionViewModel.swift; sourceTree = "<group>"; };
 		D0B7CFE126B4BEA900661123 /* DocumentPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentPickerView.swift; sourceTree = "<group>"; };
 		D0B7CFE226B4BEA900661123 /* ShareSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		D0B7CFE526B521C200661123 /* TypingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingAnimationView.swift; sourceTree = "<group>"; };
+		D0B7CFE826B537FF00661123 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
+		D0B7CFE926B5386C00661123 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D0B7CFEB26B539F300661123 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +75,11 @@
 		D041298826795AB40013808C /* FileOptimiser */ = {
 			isa = PBXGroup;
 			children = (
+				D0B7CFE926B5386C00661123 /* Info.plist */,
 				D08C1D6F26809FCA00CEB114 /* FileOptimiser.entitlements */,
-				D041299C2679683A0013808C /* Extensions */,
 				D041299726795C070013808C /* Component */,
+				D041299C2679683A0013808C /* Extensions */,
+				D0B7CFE726B537ED00661123 /* Rssources */,
 				D041299F267969D30013808C /* Views */,
 				D041298926795AB40013808C /* FileOptimiserApp.swift */,
 				D041298D26795AB60013808C /* Assets.xcassets */,
@@ -93,6 +102,7 @@
 				D0B7CFE126B4BEA900661123 /* DocumentPickerView.swift */,
 				D0B7CFE226B4BEA900661123 /* ShareSheet.swift */,
 				D09B05D026B4719E00201847 /* UploadCircle.swift */,
+				D0B7CFE526B521C200661123 /* TypingAnimationView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -113,8 +123,17 @@
 			children = (
 				D0B7CFDD26B48EDA00661123 /* CompressionView.swift */,
 				D0B7CFDF26B4903E00661123 /* CompressionViewModel.swift */,
+				D0B7CFEB26B539F300661123 /* LaunchScreen.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D0B7CFE726B537ED00661123 /* Rssources */ = {
+			isa = PBXGroup;
+			children = (
+				D0B7CFE826B537FF00661123 /* Pacifico-Regular.ttf */,
+			);
+			path = Rssources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B7CFEA26B5391800661123 /* Pacifico-Regular.ttf in Resources */,
 				D041299126795AB60013808C /* Preview Assets.xcassets in Resources */,
 				D041298E26795AB60013808C /* Assets.xcassets in Resources */,
 			);
@@ -195,6 +215,8 @@
 				D0B7CFE326B4BEA900661123 /* DocumentPickerView.swift in Sources */,
 				D09B05D326B4738800201847 /* View+Extensions.swift in Sources */,
 				D041299E2679684D0013808C /* Data+Extensions.swift in Sources */,
+				D0B7CFEC26B539F300661123 /* LaunchScreen.swift in Sources */,
+				D0B7CFE626B521C200661123 /* TypingAnimationView.swift in Sources */,
 				D09B05D526B475E800201847 /* Color+Extensions.swift in Sources */,
 				D08C1D712680AC7700CEB114 /* UIImage+Extensions.swift in Sources */,
 			);
@@ -332,6 +354,7 @@
 				DEVELOPMENT_TEAM = S4J5D3N22R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FileOptimiser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -366,6 +389,7 @@
 				DEVELOPMENT_TEAM = S4J5D3N22R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FileOptimiser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

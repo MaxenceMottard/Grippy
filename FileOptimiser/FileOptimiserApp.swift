@@ -11,7 +11,7 @@ import SwiftUI
 struct FileOptimiserApp: App {
     var body: some Scene {
         WindowGroup {
-            CompressionView()
+            LaunchScreen()
         }
     }
 }

@@ -61,10 +61,9 @@ struct UploadCircle: View {
                     .font(.system(size: 60))
             }
         }
-        .frame(width: 260, height: 260)
         .onChange(of: status) { newStatus in
             guard newStatus == .compression else { return }
-
+            
             withAnimation(self.animation) {
                 self.angle += 360.0
             }

@@ -32,12 +32,14 @@ struct CompressionView: View {
             case .upload:
                 Text("Insérez un fichier à compresser")
                     .font(.system(size: 23))
+                    .foregroundColor(.white)
                     .bold()
                     .multilineTextAlignment(.center)
                     .frame(width: 190, height: 60)
             case .compression:
                 Text("Compression en cours...")
                     .font(.system(size: 23))
+                    .foregroundColor(.white)
                     .bold()
                     .multilineTextAlignment(.center)
                     .frame(height: 60)
@@ -56,7 +58,6 @@ struct CompressionView: View {
         .padding()
         .padding(.vertical, 40)
         .fillMaxWidth()
-        .applyBackground()
         .sheet(isPresented: $viewModel.shareSheetIsPresented, onDismiss: nil) {
             if let url = viewModel.compressedData?.url {
                 ShareSheet(activityItems: [url])
