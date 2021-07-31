@@ -23,7 +23,7 @@ struct CompressionView: View {
                 }
             
             Text("compressionsView.finish.label")
-                .font(.system(size: 55))
+                .font(.system(size: 45))
                 .bold()
                 .foregroundColor(.white)
                 .opacity(viewModel.uploadCircleStatus == .finish ? 0.2 : 0)
@@ -46,7 +46,7 @@ struct CompressionView: View {
             case .finish:
                 Button(action: { viewModel.handleSaveFile() }) {
                     Text("compressionsView.status.finish.button")
-                        .font(.system(size: 20))
+                        .font(Font.custom("Pacifico-Regular", size: 22))
                         .bold()
                         .padding(.horizontal, 60)
                         .foregroundColor(.white)
@@ -67,9 +67,3 @@ struct CompressionView: View {
         }
     }
 }
-
-//struct CompressionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CompressionView()
-//    }
-//}
