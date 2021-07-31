@@ -12,9 +12,26 @@ struct UploadCircle: View {
     @Binding var filename: String?
     @State var angle: Double = 0.0
     
+    @State var outsideCircleScale = 1.0
+    @State var outsideCircleOpacity = 0.5
+    
     var body: some View {
         ZStack {
             ZStack {
+                Circle()
+                    .stroke(
+                        AngularGradient(
+                            gradient: Gradient(colors: [Color.white]),
+                            center: .center,
+                            startAngle: .degrees(0),
+                            endAngle: .degrees(360)
+                        ),
+                        style: StrokeStyle(lineWidth: 10, lineCap: .round)
+                    ).padding(50)
+                    .scaleEffect(outsideCircleScale)
+                    .opacity(outsideCircleOpacity)
+                    
+                
                 Circle()
                     .fill(status == .finish
                           ? Color.CircleLayer2Dark
@@ -61,16 +78,37 @@ struct UploadCircle: View {
                     .font(.system(size: 60))
             }
         }
+        .onAppear {
+            startOutsideCircleAnimation()
+        }
         .onChange(of: status) { newStatus in
             guard newStatus == .compression else { return }
             
-            withAnimation(self.animation) {
+            withAnimation(self.compressionAnimation) {
                 self.angle += 360.0
             }
         }
     }
     
-    var animation: Animation {
+    private func startOutsideCircleAnimation() {
+        withAnimation(outsideCircleAnimation) {
+            outsideCircleScale = 1.8
+            outsideCircleOpacity = 0
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+            outsideCircleScale = 1
+            outsideCircleOpacity = 0.5
+            
+            startOutsideCircleAnimation()
+        }
+    }
+    
+    private var outsideCircleAnimation: Animation {
+        Animation.easeInOut(duration: 2.5)
+    }
+    
+    private var compressionAnimation: Animation {
         Animation.easeInOut(duration: 2.0)
             .repeatForever(autoreverses: false)
     }
