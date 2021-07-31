@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  FileOptimiser
+
+  Created by Maxence Mottard on 31/07/2021.
+  
+*/
+
+"compressionsView.status.upload.label" = "Insert a file to be compressed";
+"compressionsView.status.compressions.label" = "Compression in progress...";
+"compressionsView.status.finish.button" = "Download";
+"compressionsView.finish.label" = "Completed";

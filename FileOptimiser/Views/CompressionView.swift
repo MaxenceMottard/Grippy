@@ -22,7 +22,7 @@ struct CompressionView: View {
                     DocumentPickerView(data: $viewModel.pickedData)
                 }
             
-            Text("Terminé")
+            Text("compressionsView.finish.label")
                 .font(.system(size: 55))
                 .bold()
                 .foregroundColor(.white)
@@ -30,14 +30,14 @@ struct CompressionView: View {
             
             switch viewModel.uploadCircleStatus {
             case .upload:
-                Text("Insérez un fichier à compresser")
+                Text("compressionsView.status.upload.label")
                     .font(.system(size: 23))
                     .foregroundColor(.white)
                     .bold()
                     .multilineTextAlignment(.center)
                     .frame(width: 190, height: 60)
             case .compression:
-                Text("Compression en cours...")
+                Text("compressionsView.status.compressions.label")
                     .font(.system(size: 23))
                     .foregroundColor(.white)
                     .bold()
@@ -45,7 +45,7 @@ struct CompressionView: View {
                     .frame(height: 60)
             case .finish:
                 Button(action: { viewModel.handleSaveFile() }) {
-                    Text("Télécharger")
+                    Text("compressionsView.status.finish.button")
                         .font(.system(size: 20))
                         .bold()
                         .padding(.horizontal, 60)

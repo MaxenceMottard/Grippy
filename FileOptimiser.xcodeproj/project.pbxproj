@@ -22,6 +22,8 @@
 		D0B7CFE626B521C200661123 /* TypingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFE526B521C200661123 /* TypingAnimationView.swift */; };
 		D0B7CFEA26B5391800661123 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CFE826B537FF00661123 /* Pacifico-Regular.ttf */; };
 		D0B7CFEC26B539F300661123 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFEB26B539F300661123 /* LaunchScreen.swift */; };
+		D0B7CFF126B54BE200661123 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CFF326B54BE200661123 /* Localizable.strings */; };
+		D0B7CFF626B54BF200661123 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CFF826B54BF200661123 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		D0B7CFE826B537FF00661123 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		D0B7CFE926B5386C00661123 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D0B7CFEB26B539F300661123 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		D0B7CFF226B54BE200661123 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D0B7CFF726B54BF200661123 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +79,14 @@
 		D041298826795AB40013808C /* FileOptimiser */ = {
 			isa = PBXGroup;
 			children = (
-				D0B7CFE926B5386C00661123 /* Info.plist */,
-				D08C1D6F26809FCA00CEB114 /* FileOptimiser.entitlements */,
 				D041299726795C070013808C /* Component */,
 				D041299C2679683A0013808C /* Extensions */,
 				D0B7CFE726B537ED00661123 /* Rssources */,
 				D041299F267969D30013808C /* Views */,
+				D08C1D6F26809FCA00CEB114 /* FileOptimiser.entitlements */,
 				D041298926795AB40013808C /* FileOptimiserApp.swift */,
 				D041298D26795AB60013808C /* Assets.xcassets */,
+				D0B7CFE926B5386C00661123 /* Info.plist */,
 				D041298F26795AB60013808C /* Preview Content */,
 			);
 			path = FileOptimiser;
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				D0B7CFE826B537FF00661123 /* Pacifico-Regular.ttf */,
+				D0B7CFF326B54BE200661123 /* Localizable.strings */,
+				D0B7CFF826B54BF200661123 /* Localizable.strings */,
 			);
 			path = Rssources;
 			sourceTree = "<group>";
@@ -178,6 +184,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = D041297D26795AB40013808C;
 			productRefGroup = D041298726795AB40013808C /* Products */;
@@ -194,7 +201,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B7CFF626B54BF200661123 /* Localizable.strings in Resources */,
 				D0B7CFEA26B5391800661123 /* Pacifico-Regular.ttf in Resources */,
+				D0B7CFF126B54BE200661123 /* Localizable.strings in Resources */,
 				D041299126795AB60013808C /* Preview Assets.xcassets in Resources */,
 				D041298E26795AB60013808C /* Assets.xcassets in Resources */,
 			);
@@ -223,6 +232,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D0B7CFF326B54BE200661123 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0B7CFF226B54BE200661123 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D0B7CFF826B54BF200661123 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0B7CFF726B54BF200661123 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D041299226795AB60013808C /* Debug */ = {
