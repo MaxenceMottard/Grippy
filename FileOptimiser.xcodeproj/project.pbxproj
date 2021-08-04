@@ -24,6 +24,7 @@
 		D0B7CFEC26B539F300661123 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFEB26B539F300661123 /* LaunchScreen.swift */; };
 		D0B7CFF126B54BE200661123 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CFF326B54BE200661123 /* Localizable.strings */; };
 		D0B7CFF626B54BF200661123 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CFF826B54BF200661123 /* Localizable.strings */; };
+		D0B7CFFA26B6C53E00661123 /* PickedDocumentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7CFF926B6C53E00661123 /* PickedDocumentDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		D0B7CFEB26B539F300661123 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		D0B7CFF226B54BE200661123 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0B7CFF726B54BF200661123 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D0B7CFF926B6C53E00661123 /* PickedDocumentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedDocumentDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,8 @@
 			children = (
 				D041299726795C070013808C /* Component */,
 				D041299C2679683A0013808C /* Extensions */,
-				D0B7CFE726B537ED00661123 /* Rssources */,
+				D0B7CFFB26B6C54400661123 /* Protocols */,
+				D0B7CFE726B537ED00661123 /* Ressources */,
 				D041299F267969D30013808C /* Views */,
 				D08C1D6F26809FCA00CEB114 /* FileOptimiser.entitlements */,
 				D041298926795AB40013808C /* FileOptimiserApp.swift */,
@@ -132,14 +135,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D0B7CFE726B537ED00661123 /* Rssources */ = {
+		D0B7CFE726B537ED00661123 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
 				D0B7CFE826B537FF00661123 /* Pacifico-Regular.ttf */,
 				D0B7CFF326B54BE200661123 /* Localizable.strings */,
 				D0B7CFF826B54BF200661123 /* Localizable.strings */,
 			);
-			path = Rssources;
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		D0B7CFFB26B6C54400661123 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D0B7CFF926B6C53E00661123 /* PickedDocumentDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +238,7 @@
 				D0B7CFEC26B539F300661123 /* LaunchScreen.swift in Sources */,
 				D0B7CFE626B521C200661123 /* TypingAnimationView.swift in Sources */,
 				D09B05D526B475E800201847 /* Color+Extensions.swift in Sources */,
+				D0B7CFFA26B6C53E00661123 /* PickedDocumentDelegate.swift in Sources */,
 				D08C1D712680AC7700CEB114 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +388,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FileOptimiser/FileOptimiser.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FileOptimiser/Preview Content\"";
@@ -398,7 +411,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maxencemottard.file-optimiser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.maxencemottard.file-optimiser";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.maxencemottard.file-optimiser macos";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -412,6 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FileOptimiser/FileOptimiser.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FileOptimiser/Preview Content\"";
@@ -434,7 +450,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maxencemottard.file-optimiser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.maxencemottard.file-optimiser";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match AppStore com.maxencemottard.file-optimiser macos";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

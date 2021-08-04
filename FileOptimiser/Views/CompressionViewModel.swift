@@ -10,12 +10,12 @@ import Combine
 import SwiftUI
 import PDFKit
 
-final class CompressionViewModel: ObservableObject {
+final class CompressionViewModel: NSObject, ObservableObject {
     var cancelables: Set<AnyCancellable> = []
     
     //  MARK: State
     @Published var uploadCircleStatus: UploadCircle.Status = .upload
-    @Published var documentPickerIsPresented = false
+    @Published var iOSDocumentPickerIsPresented = false
     @Published var shareSheetIsPresented = false
     
     //  MARK: Data
@@ -54,7 +54,7 @@ final class CompressionViewModel: ObservableObject {
     func handleUploadFile() {
         guard uploadCircleStatus == .upload else { return }
         
-        documentPickerIsPresented = true
+        iOSDocumentPickerIsPresented = true
     }
     
     func handleSaveFile() {

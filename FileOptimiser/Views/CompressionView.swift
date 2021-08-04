@@ -14,11 +14,9 @@ struct CompressionView: View {
         VStack(spacing: 70) {
             Spacer()
             
-            UploadCircle(
-                status: $viewModel.uploadCircleStatus,
-                filename: $viewModel.filename)
-                .onTapGesture { viewModel.handleUploadFile() }
-                .sheet(isPresented: $viewModel.documentPickerIsPresented) {
+            
+            uploadCircle
+                .sheet(isPresented: $viewModel.iOSDocumentPickerIsPresented) {
                     DocumentPickerView(data: $viewModel.pickedData)
                 }
             
@@ -64,6 +62,17 @@ struct CompressionView: View {
             }
         }.onAppear {
             viewModel.bind()
+        }.onChange(of: viewModel.uploadCircleStatus) {
+            if $0 == .finish {
+                viewModel.handleSaveFile()
+            }
         }
+    }
+    
+    var uploadCircle: some View {
+        UploadCircle(
+            status: $viewModel.uploadCircleStatus,
+            filename: $viewModel.filename)
+            .onTapGesture { viewModel.handleUploadFile() }
     }
 }

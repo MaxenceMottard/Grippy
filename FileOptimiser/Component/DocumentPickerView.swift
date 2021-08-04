@@ -26,7 +26,7 @@ struct DocumentPickerView: UIViewControllerRepresentable {
         return Coordinator(data: $data)
     }
     
-    class Coordinator: NSObject, UIDocumentPickerDelegate {
+    class Coordinator: NSObject, UIDocumentPickerDelegate, PickedDocumentDelegate {
         @Binding var data: PickedDocument?
         
         init(data: Binding<PickedDocument?>) {
@@ -34,19 +34,7 @@ struct DocumentPickerView: UIViewControllerRepresentable {
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-            guard let url = urls.first,
-                  url.startAccessingSecurityScopedResource() else { return }
-            
-            do {
-                let filename = url.lastPathComponent
-                let fileData = try Data(contentsOf: url)
-                
-                self.data = PickedDocument(data: fileData, filename: filename)
-            } catch(let error) {
-                print(error)
-            }
-            
-            url.stopAccessingSecurityScopedResource()
+            self.data = formatData(urls: urls)
         }
     }
 }
