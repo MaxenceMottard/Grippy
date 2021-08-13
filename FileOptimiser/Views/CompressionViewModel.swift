@@ -25,30 +25,16 @@ final class CompressionViewModel: NSObject, ObservableObject {
     
     func bind() {
         $pickedData
-            .map { [uploadCircleStatus, compressWithQuality] newData in
-                guard let pickedData = newData else {
-                    return uploadCircleStatus
-                }
+            .sink { [compressWithQuality] newData in
+                guard let pickedData = newData else { return }
 
                 compressWithQuality(pickedData, .low)
-                
-                return UploadCircle.Status.compression
-            }.assign(to: \.uploadCircleStatus, on: self)
-            .store(in: &cancelables)
+            }.store(in: &cancelables)
         
         $pickedData
             .map { $0?.filename }
             .assign(to: \.filename, on: self)
             .store(in: &cancelables)
-        
-        $compressedData
-            .sink { [weak self] in
-                guard let _ = $0 else { return }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self?.uploadCircleStatus = .finish
-                }
-            }.store(in: &cancelables)
     }
     
     func handleUploadFile() {
@@ -95,7 +81,7 @@ final class CompressionViewModel: NSObject, ObservableObject {
             .appendingPathComponent(document.filename)
         
         finalDocument.write(to: url)
-        
+
         compressedData = CompressedData(algorithm: quality, data: finalDocument, percentOfOriginalSize: 30, url: url)
     }
 }

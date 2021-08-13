@@ -8,5 +8,5 @@
 
 "compressionsView.status.upload.label" = "Insérez un fichier à compresser";
 "compressionsView.status.compressions.label" = "Compression en cours...";
-"compressionsView.status.finish.button" = "Télécharger";
+"compressionsView.status.finish.button %@" = "Télécharger %@";
 "compressionsView.finish.label" = "Terminé";

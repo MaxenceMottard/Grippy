@@ -65,13 +65,17 @@ struct UploadCircle: View {
                     .rotationEffect(Angle(degrees: angle))
             }
             
-            if status == .compression || status == .finish {
+            if status == .compression {
                 Text(filename ?? "")
                     .font(.system(size: 23))
                     .bold()
                     .foregroundColor(.white)
                     .lineLimit(2)
                     .padding(.horizontal, 50)
+            } else if status == .finish {
+                Image(systemName: "folder")
+                    .foregroundColor(.white)
+                    .font(.system(size: 60))
             } else {
                 Image(systemName: "icloud.and.arrow.down")
                     .foregroundColor(.white)
