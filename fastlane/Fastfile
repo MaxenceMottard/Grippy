@@ -15,7 +15,6 @@ lane :appstoreconnect do |options|
         scheme: projectName,
         clean: true,
         export_method: "app-store",
-        output_directory: "fastlane/artefacts"
     )
     pilot(skip_waiting_for_build_processing:true)
 end
