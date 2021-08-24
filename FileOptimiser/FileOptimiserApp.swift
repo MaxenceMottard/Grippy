@@ -12,6 +12,7 @@ struct FileOptimiserApp: App {
     var body: some Scene {
         WindowGroup {
             LaunchScreen()
+                .preferredColorScheme(.dark)
         }
     }
 }
